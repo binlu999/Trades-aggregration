@@ -38,17 +38,17 @@ class Symbol:
     #<symbol>,<MaxTimeGap>,<Volume>,<WeightedAveragePrice>,<MaxPrice>
     #("TimeStamp","Symbol","Quantity","Price")
     def __init__(self, trade):
-        self.timeStamp = long(trade['TimeStamp'])
-	self.maxDeltaTimeStamp=0
+        self.timeStamp = int(trade['TimeStamp'])
+        self.maxDeltaTimeStamp=0
         self.volume = int(trade['Quantity'])
         self.grandTotal=int(trade['Quantity'])*int(trade['Price'])
         self.maxPrice=int(trade['Price'])
 
     def addTrade(self,trade):
-        if long(trade['TimeStamp']) - self.timeStamp > self.maxDeltaTimeStamp:
-            self.maxDeltaTimeStamp = long(trade['TimeStamp']) - self.timeStamp
+        if int(trade['TimeStamp']) - self.timeStamp > self.maxDeltaTimeStamp:
+            self.maxDeltaTimeStamp = int(trade['TimeStamp']) - self.timeStamp
 
-	self.timeStamp = long(trade['TimeStamp'])
+        self.timeStamp = int(trade['TimeStamp'])
         self.volume += int(trade['Quantity'])
         self.grandTotal += int(trade['Quantity'])*int(trade['Price'])
         if self.maxPrice < int(trade['Price']):
