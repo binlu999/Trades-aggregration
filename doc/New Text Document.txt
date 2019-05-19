@@ -1,0 +1,6 @@
+
+chmod 400 binlu99-hotmail-root-key-pair.pem
+pl
+ssh -i "binlu99-hotmail-root-key-pair.pem" ec2-user@ec2-17-211-58-242.compute-1.amazonaws.com
+
+
